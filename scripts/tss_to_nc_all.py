@@ -168,6 +168,11 @@ def create_nc(list_of_stations = "/scratch/6574882/reanalysis/stationLatLon.csv"
         lon_ind = int(np.where(longitude == station_lons[i])[0][0])
         lat_ind = int(np.where(latitude  == station_lats[i])[0][0])
         
+        print(lon_ind)
+        print(lat_ind)
+        
+        check
+        
         rootgrp.variables[shortVarName][:,lat_ind,lon_ind] = values
 
         rootgrp.sync()
