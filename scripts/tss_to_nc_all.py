@@ -173,7 +173,7 @@ def create_nc(list_of_stations = "/scratch/6574882/reanalysis/stationLatLon.csv"
         
         print(values)
         
-        rootgrp.variables[shortVarName][:,lat_ind,lon_ind] = np.asarray(values)
+        rootgrp.variables[shortVarName][0:len(date_string),lat_ind,lon_ind] = np.asarray(values)
 
         rootgrp.sync()
         rootgrp.close()
