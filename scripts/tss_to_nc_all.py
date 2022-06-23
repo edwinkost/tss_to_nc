@@ -152,8 +152,6 @@ def create_nc(list_of_stations = "/scratch/6574882/reanalysis/stationLatLon.csv"
             array = np.loadtxt(file_name, delimiter=",", skiprows = 1, dtype = "str")
         values = array[:,1].astype(float)
 
-        var_value = value[i]
-        
         lat_ind = int(np.where(latitude  == station_lats[i]))
         lon_ind = int(np.where(longitude == station_lons[i]))
         
