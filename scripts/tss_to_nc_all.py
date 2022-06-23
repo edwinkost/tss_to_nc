@@ -113,7 +113,9 @@ def create_nc(list_of_stations = "/scratch/6574882/reanalysis/stationLatLon.csv"
     station_lons = array[:,1]
     station_lats = array[:,2] 
     
-      
+    print(station_lons)
+
+    check
 
 
     # use a csv file to get time series of dates (time stamps)
@@ -159,8 +161,8 @@ def create_nc(list_of_stations = "/scratch/6574882/reanalysis/stationLatLon.csv"
             array = np.loadtxt(file_name, delimiter=",", skiprows = 1, dtype = "str")
         values = array[:,1].astype(float)
 
-        lat_ind = int(np.where(latitude  == station_lats[i]))
         lon_ind = int(np.where(longitude == station_lons[i]))
+        lat_ind = int(np.where(latitude  == station_lats[i]))
         
         rootgrp.variables[shortVarName][:,lat_ind,lon_ind] = values
 
