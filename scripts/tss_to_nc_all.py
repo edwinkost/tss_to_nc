@@ -40,8 +40,8 @@ def create_nc(list_of_stations = "/scratch/6574882/reanalysis/stationLatLon.csv"
     longitude = np.arange(-180.0 + 0.5/2., 180.0,  0.5)
     latitude  = np.arange(  90.0 - 0.5/2., -90.0, -0.5)
     
-    nc_format = 'NETCDF4'
-    nc_zlib   = True
+    nc_format = 'NETCDF3_CLASSIC'
+    nc_zlib   = False
     
     attributeDictionary = {}
     attributeDictionary['institution'] = "Utrecht Univ."
@@ -113,12 +113,6 @@ def create_nc(list_of_stations = "/scratch/6574882/reanalysis/stationLatLon.csv"
     station_lons = array[:,1].astype(float)
     station_lats = array[:,2].astype(float) 
     
-    print(station_lons)
-    print(station_lons[0])
-
-    # ~ check
-
-
     # use a csv file to get time series of dates (time stamps)
     with open(input_csv_files_folder + str("pcr_rf_reanalysis_monthly_30arcmin_13.csv")) as file_name:
         array = np.loadtxt(file_name, delimiter=",", skiprows = 1, dtype = "str")
@@ -164,20 +158,10 @@ def create_nc(list_of_stations = "/scratch/6574882/reanalysis/stationLatLon.csv"
             array = np.loadtxt(file_name, delimiter=",", skiprows = 1, dtype = "str")
         values = array[:,1].astype(float)
 
-        print(longitude)
-        print(station_lons[i])
-        
         lat_ind = int(np.where(latitude  == station_lats[i])[0][0])
         lon_ind = int(np.where(longitude == station_lons[i])[0][0])
         
-        print(lon_ind)
-        print(lat_ind)
-        
-        print(values)
-        
         rootgrp.variables[shortVarName][:,lat_ind,lon_ind] = values
-
-        # ~ rootgrp.variables[shortVarName][0][lat_ind,lon_ind] = np.asarray(values)[0]
 
         rootgrp.sync()
         rootgrp.close()
