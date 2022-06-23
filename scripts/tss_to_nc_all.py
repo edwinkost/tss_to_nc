@@ -154,8 +154,8 @@ def create_nc(list_of_stations = "/scratch/6574882/reanalysis/stationLatLon.csv"
 
         var_value = value[i]
         
-        lat_ind = int(np.where(latitude  == station_lats[i])
-        lon_ind = int(np.where(longitude == station_lons[i])
+        lat_ind = int(np.where(latitude  == station_lats[i]))
+        lon_ind = int(np.where(longitude == station_lons[i]))
         
         rootgrp.variables[shortVarName][:,lat_ind,lon_ind] = values
 
