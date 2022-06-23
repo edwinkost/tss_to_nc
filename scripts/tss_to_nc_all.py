@@ -103,11 +103,11 @@ def create_nc(list_of_stations = "/scratch/6574882/reanalysis/stationLatLon.csv"
 
     # get the list of stations and their coordinates
     with open(list_of_stations) as file_name:
-        array = np.loadtxt(file_name, delimiter=",", skiprows = 1, dtype = "str")
+        array = np.loadtxt(file_name, delimiter=",", skiprows = 1)
     
     print(array)
     
-    check
+    # ~ check
     
     station_nums = array[:,0]
     station_lons = array[:,1]
