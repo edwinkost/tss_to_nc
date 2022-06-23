@@ -109,14 +109,14 @@ def create_nc(list_of_stations = "/scratch/6574882/reanalysis/stationLatLon.csv"
     
     # ~ check
     
-    station_nums = array[:,0]
-    station_lons = array[:,1]
-    station_lats = array[:,2] 
+    station_nums = array[:,0].astype(int)
+    station_lons = array[:,1].astype(float)
+    station_lats = array[:,2].astype(float) 
     
     print(station_lons)
     print(station_lons[0])
 
-    check
+    # ~ check
 
 
     # use a csv file to get time series of dates (time stamps)
