@@ -156,6 +156,8 @@ def create_nc(list_of_stations = "/scratch/6574882/reanalysis/stationLatLon.csv"
     # loop through csv files and write values to netcdf files
     for i in range(0, len(station_nums)):
         
+        rootgrp = nc.Dataset(output_nc_file, 'a')
+
         csv_file = input_csv_files_folder + "pcr_rf_reanalysis_monthly_30arcmin_" + str(int(station_nums[i])) + ".csv"
         print(csv_file)
         with open(csv_file) as file_name:
@@ -173,6 +175,8 @@ def create_nc(list_of_stations = "/scratch/6574882/reanalysis/stationLatLon.csv"
         
         print(values)
         
+        rootgrp.variables[shortVarName][:][lat_ind,lon_ind] = np.asarray(values)
+
         rootgrp.variables[shortVarName][0][lat_ind,lon_ind] = np.asarray(values)[0]
 
         rootgrp.sync()
