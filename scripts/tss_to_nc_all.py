@@ -107,7 +107,7 @@ def create_nc(list_of_stations = "/scratch/6574882/reanalysis/stationLatLon.csv"
     
     print(array)
     
-    # ~ check
+    check
     
     station_nums = array[:,0]
     station_lons = array[:,1]
